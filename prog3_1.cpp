@@ -14,7 +14,7 @@ int main( int argc, char *argv[]){
     }
     lua_State *One = luaL_newstate();
     luaL_openlibs(One);
-    luaL_dostring(One, "print('Hello World')");
+    luaL_dostring(One, "print('Hello World - How are you?')");
     lua_close(One);
     return 0;
 }
