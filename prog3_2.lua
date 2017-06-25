@@ -1,12 +1,12 @@
 function InfixToPostFix(str)
-    Infix = {}; i = 1
-    for x in string.gmatch("%s") do
+    local Infix = {}; i = 1
+    for x in string.gmatch(str,"%s") do
         Infix[i] = x
         i = i + 1
     end
     
-    Operator_Stack = {}; o = 1
-    Postfix = {}; p = 1
+    local Operator_Stack = {}; o = 1
+    local Postfix = {}; p = 1
     for q in ipairs(Infix) do
         if tonumber(q) ~= nil then
             Postfix[p] = q
