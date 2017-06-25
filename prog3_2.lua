@@ -1,4 +1,4 @@
-void function InfixToPostFix(str)
+function InfixToPostFix(str)
     Infix = {}; i = 1
     for x in string.gmatch("%s") do
         Infix[i] = x
@@ -43,7 +43,7 @@ void function InfixToPostFix(str)
         Operator_Stack[o] = q
     end
     end
-    return postfix
+    return Postfix
 end
     
     
