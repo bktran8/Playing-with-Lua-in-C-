@@ -1,7 +1,7 @@
-function InfixToPostFix(str)
+void function InfixToPostFix(str)
     Infix = {}; i = 1
     for x in string.gmatch("%s") do
-        infix[i] = x
+        Infix[i] = x
         i = i + 1
     end
     
@@ -12,11 +12,11 @@ function InfixToPostFix(str)
             Postfix[p] = q
             p = p + 1
     
-    else if (q == "*" or q == "/" or q == "+" or q == "-" then
+    elseif (q == "*" or q == "/" or q == "+" or q == "-" then
         if Operator_Stack[o] == nil then
             Operator_Stack = q
     
-    else if ((Operator_Stack[o] == "*" and q == "/") or (Operator_Stack[o] == "+" and q == "-")) then
+    elseif ((Operator_Stack[o] == "*" and q == "/") or (Operator_Stack[o] == "+" and q == "-")) then
         while o > 0 do
             Postfix[p] = Operator_Stack[o]
             p = p + 1
@@ -25,11 +25,11 @@ function InfixToPostFix(str)
         o = o + 1 
         Operator_Stack[o] = q 
         
-    else if ((Operator_Stack[o] == "/" and q == "*") or (Operator_Stack[o] == "-" and q == "+")) then
+    elseif ((Operator_Stack[o] == "/" and q == "*") or (Operator_Stack[o] == "-" and q == "+")) then
         o = o + 1
         Operator_Stack[o] = q
         
-    else if ((Operator_Stack[o] == "*" and Operator_Stack[o] == "/") or (q == "+" and q == "-"))
+    elseif ((Operator_Stack[o] == "*" and Operator_Stack[o] == "/") or (q == "+" and q == "-"))
         while o > 0 do
             Postfix[p] = Operator_Stack[o]
             p = p + 1
@@ -38,20 +38,13 @@ function InfixToPostFix(str)
         o = o + 1 
         Operator_Stack[o] = q 
         
-    else if ((Operator_Stack[o] == "+" and Operator_Stack[o] == "-") or (q == "*" and q == "/"))
+    elseif ((Operator_Stack[o] == "+" and Operator_Stack[o] == "-") or (q == "*" and q == "/"))
         o = o + 1
         Operator_Stack[o] = q
-   
-    end
-    end
-    end
-    end
-    end
-    end
     end
     end
     return postfix
-    end
+end
     
     
     
