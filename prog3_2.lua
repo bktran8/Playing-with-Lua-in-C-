@@ -5,48 +5,40 @@ InfixToPostfix = function (str)
         i = i + 1
     end
     
-    Operator_Stack = {}; o = 1
-    Postfix = {}; p = 1
-    for a, b in pairs(infix) do
-        if tonumber(b) ~= nil then
-            Postfix[p] = b
+    postfix = {}; p = 1
+    stack = {}; s = 1
+    fo k, v in pairs(infix) do
+        if tonumber(v) ~= nil then
+            postfix[p] = v
             p = p + 1
-    
-    elseif b == "*" or b == "/" or b == "+" or b == "-" then
-        if Operator_Stack[o] == nil then
-            Operator_Stack[o] = b
-    
-    elseif ((Operator_Stack[o] == "*" and b == "/") or (Operator_Stack[o] == "+" and b == "-")) then
-            Postfix[p] = Operator_Stack[o]
-            p = p + 1
-            Operator_Stack[o] = b 
-        
-    elseif ((Operator_Stack[o] == "/" and b == "*") or (Operator_Stack[o] == "-" and b == "+") or ((Operator_Stack[o] == "+" or Operator_Stack[o] == "-") and (b == "*" or b == "/"))) then
-        o = o + 1
-        Operator_Stack[o] = b
-        
-    elseif ((Operator_Stack[o] == "*" and Operator_Stack[o] == "/") or (b == "+" and b == "-"))
-        while o > 0 do
-            Postfix[p] = Operator_Stack[o]
-            p = p + 1
-            o = o - 1
+        elseif v == "*" or v == "/" or v == "+" or v == "-" then
+            if stack[s] == nil then
+                stack[s] = v
+            elseif ((stack[s] == "+" and v == "-") or (stack[s] == "*" and v == "/")) then
+                postfix[p] = stack[s]
+                p = p + 1
+                stack[s] = v
+            elseif ((stack[s] == "/" and v == "*") or (stack[s] == "-" and v == "+") or ((stack[s] == "+" or stack[s] == "-") and (v == "*" or v == "/"))) then
+                s = s + 1
+                stack[s] = v
+            elseif ((stack[s] == "*" or stack[s] == "/") and (v == "+" or v == "-")) then
+                while s > 0 do
+                    postfix[p] = stack[s]
+                    p = p + 1
+                    s = s - 1
+                end
+                o = o + 1
+                stack[s] = v
+            end
         end
-        o = o + 1 
-        Operator_Stack[o] = b 
     end
+    while s > o
+        postfix[p] = stack[s]
+        p = p + 1
+        s = s - 1
     end
-    end
-    while o > 0 do
-            Postfix[p] = Operator_Stack[o]
-            p = p + 1
-            o = o - 1
-        end
-    print(table.concat(Postfix, " "))
+    print(table.concat(postfix, " "))
 end
-    
-    
-    
-    
     
     
     
