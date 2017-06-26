@@ -11,8 +11,8 @@ function InfixToPostfix (str)
         if tonumber(v) ~= nil then
             postfix[p]=v
             p=p+1
-        elseif (v=="*" or v=="/" or v=="+" or v=="-") then
-            if (stack[s]==nil) then
+        elseif v=="*" or v=="/" or v=="+" or v=="-" then
+            if stack[s]==nil then
                 stack[s]=v
             elseif ((stack[s]=="+" and v=="-") or (stack[s]=="*" and v=="/")) then
                 postfix[p] = stack[s]
@@ -32,7 +32,7 @@ function InfixToPostfix (str)
             end
         end
     end
-    while s > 0
+    while s > 0 do
         postfix[p] = stack[s]
         p = p + 1
         s = s - 1
