@@ -7,7 +7,7 @@ InfixToPostfix = function (str)
     
     postfix = {}; p = 1
     stack = {}; s = 1
-    fo k, v in pairs(infix) do
+    for k, v in pairs(infix) do
         if tonumber(v) ~= nil then
             postfix[p] = v
             p = p + 1
