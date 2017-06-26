@@ -1,12 +1,13 @@
+local InfixToPostfix = InfixToPostfix
 InfixToPostfix = function (str)
-    infix={};i=1
+    local infix={};i=1
     for s in str:gmatch("%S+") do
         infix[i]=s
         i=i+1
     end
     
-    postfix={};p=1
-    stack={};s=1
+    local postfix={};p=1
+    local stack={};s=1
     for k, v in pairs(infix) do
         if tonumber(v) ~= nil then
             postfix[p]=v
@@ -40,6 +41,22 @@ InfixToPostfix = function (str)
     return(table.concat(postfix, " "))
     
 end
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
