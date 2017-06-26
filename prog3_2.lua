@@ -41,7 +41,7 @@ InfixToPostfix = function (str)
             p = p + 1
             o = o - 1
         end
-    return(table.concat(Postfix, " "))
+    print(table.concat(Postfix, " "))
 end
     
     
