@@ -1,7 +1,7 @@
 
 InfixToPostfix = function (str)
     infix = {}; i = 1
-    for s in str:gmatch("%S+") do
+    for s in string.gmatch("%S+") do
         infix[i] = s
         i = i + 1
     end
