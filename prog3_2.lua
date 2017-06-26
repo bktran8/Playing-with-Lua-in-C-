@@ -1,3 +1,4 @@
+local InfixToPostfix = InfixToPostfix
 InfixToPostfix = function (str)
     infix = {}; i = 1
     for s in str:gmatch("%S+") do
@@ -37,7 +38,7 @@ InfixToPostfix = function (str)
         p = p + 1
         s = s - 1
     end
-    return(table.concat(postfix, " "))
+    print(table.concat(postfix, " "))
     
 end
     
