@@ -1,5 +1,5 @@
 
-local function InfixToPostfix(string)
+InfixToPostfix = function (str)
     infix = {}; i = 1
     for s in str:gmatch("%S+") do
         infix[i] = s
