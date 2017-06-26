@@ -1,49 +1,47 @@
-function InfixToPostFix(str)
-    local Infix = {}; i = 1
-    for x in string.gmatch(str,"%s") do
-        Infix[i] = x
+InfixToPostfix = function (str)
+    infix = {}; i = 1
+    for s in str:gmatch("%S+") do
+        infix[i] = s
         i = i + 1
     end
     
-    local Operator_Stack = {}; o = 1
-    local Postfix = {}; p = 1
-    for q in ipairs(Infix) do
-        if tonumber(q) ~= nil then
-            Postfix[p] = q
+    Operator_Stack = {}; o = 1
+    Postfix = {}; p = 1
+    for a, b in pairs(Infix) do
+        if tonumber(b) ~= nil then
+            Postfix[p] = b
             p = p + 1
     
-    elseif (q == "*" or q == "/" or q == "+" or q == "-" then
+    elseif b == "*" or b == "/" or b == "+" or b == "-" then
         if Operator_Stack[o] == nil then
-            Operator_Stack = q
+            Operator_Stack[o] = b
     
-    elseif ((Operator_Stack[o] == "*" and q == "/") or (Operator_Stack[o] == "+" and q == "-")) then
+    elseif ((Operator_Stack[o] == "*" and b == "/") or (Operator_Stack[o] == "+" and b == "-")) then
+            Postfix[p] = Operator_Stack[o]
+            p = p + 1
+            Operator_Stack[o] = b 
+        
+    elseif ((Operator_Stack[o] == "/" and b == "*") or (Operator_Stack[o] == "-" and b == "+") or ((Operator_Stack[o] == "+" or Operator_Stack[o] == "-") and (b == "*" or b == "/"))) then
+        o = o + 1
+        Operator_Stack[o] = b
+        
+    elseif ((Operator_Stack[o] == "*" and Operator_Stack[o] == "/") or (b == "+" and b == "-"))
         while o > 0 do
             Postfix[p] = Operator_Stack[o]
             p = p + 1
             o = o - 1
         end
         o = o + 1 
-        Operator_Stack[o] = q 
-        
-    elseif ((Operator_Stack[o] == "/" and q == "*") or (Operator_Stack[o] == "-" and q == "+")) then
-        o = o + 1
-        Operator_Stack[o] = q
-        
-    elseif ((Operator_Stack[o] == "*" and Operator_Stack[o] == "/") or (q == "+" and q == "-"))
-        while o > 0 do
+        Operator_Stack[o] = b 
+    end
+    end
+    end
+    while o > 0 do
             Postfix[p] = Operator_Stack[o]
             p = p + 1
             o = o - 1
         end
-        o = o + 1 
-        Operator_Stack[o] = q 
-        
-    elseif ((Operator_Stack[o] == "+" and Operator_Stack[o] == "-") or (q == "*" and q == "/"))
-        o = o + 1
-        Operator_Stack[o] = q
-    end
-    end
-    return Postfix
+    return(table.concat(postfix, " "))
 end
     
     
