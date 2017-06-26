@@ -28,12 +28,12 @@ local function InfixToPostfix(str)
                     p = p + 1
                     s = s - 1
                 end
-                o = o + 1
+                s = s + 1
                 stack[s] = v
             end
         end
     end
-    while s > o
+    while s > 0
         postfix[p] = stack[s]
         p = p + 1
         s = s - 1
