@@ -15,12 +15,14 @@ int main( int argc, char *argv[]){
         cerr << "ERROR! Program accepts 1 command line argument." << endl;
     }
     
-    char str[256];
-    std::cin.getline(str, sizeof(str));
+    //char str[256];
+    //std::cin.getline(str, sizeof(str));
+    string temp;
+    cin >> temp;
     lua_State *One = luaL_newstate();
     luaL_openlibs(One);
     luaL_dofile(One, argv[1]);
-    luaL_dostring(One,"return InfixToPostfix('3 + 10 / 2 * 4 - 1')");
+    luaL_dostring(One,"return InfixToPostfix(temp)");
     printf("%s",luaL_checkstring(One,-1));
     lua_close(One);
     return 0;
