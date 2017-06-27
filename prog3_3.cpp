@@ -21,7 +21,7 @@ int main( int argc, char *argv[]){
     cin >> input;
     luaL_dofile(One, argv[1]);
     luaL_dostring(One,"InfixToPostfix(input)");
-    printf("%s",lua_tostring(L,-1));
+    printf("%s",lua_tostring(One,-1));
     lua_close(One);
     return 0;
 }
