@@ -10,7 +10,7 @@ using namespace std;
 
 
 int main( int argc, char *argv[]){
-    cout << "Assignment #3-1, Brenda Tran, bktran8@gmail.com" << endl;
+    cout << "Assignment #3-3, Brenda Tran, bktran8@gmail.com" << endl;
     if(argc >= 3 || argc <=1){
         cerr << "ERROR! Program accepts 1 command line argument." << endl;
     }
@@ -20,7 +20,7 @@ int main( int argc, char *argv[]){
     luaL_openlibs(One);
     cin >> str;
     luaL_dofile(One, argv[1]);
-    luaL_dostring(One,"InfixToPostfix(str)");
+    luaL_dostring(One,"InfixToPostfix(3+3-3)");
     printf("%s",lua_tostring(One,-1));
     lua_close(One);
     return 0;
