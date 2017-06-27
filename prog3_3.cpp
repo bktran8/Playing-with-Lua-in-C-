@@ -16,7 +16,7 @@ int main( int argc, char *argv[]){
     }
     
     char inputt[256];
-    std::cin.getline(str, sizeof(str));
+    std::cin.getline(inputt, sizeof(inputt));
     string str(inputt);
     lua_State *One = luaL_newstate();
     luaL_openlibs(One);
