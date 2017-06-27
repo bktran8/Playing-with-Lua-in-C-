@@ -17,6 +17,7 @@ int main( int argc, char *argv[]){
     
     char str[256];
     std::cin.getline(str, sizeof(str));
+    string str(str);
     lua_State *One = luaL_newstate();
     luaL_openlibs(One);
     luaL_dofile(One, argv[1]);
