@@ -16,12 +16,12 @@ int main( int argc, char *argv[]){
     }
     
     char str[256];
+    std::cin.getline(str, sizeof(str));
     lua_State *One = luaL_newstate();
     luaL_openlibs(One);
     luaL_dofile(One, argv[1]);
-    cin >> str;
-    luaL_dostring(One,"InfixToPostfix()");
-    printf("%s",lua_tostring(One,-1));
+    luaL_dostring(One,"InfixToPostfix(str)");
+    printf("%s",luaL_checkstring(One,-1));
     lua_close(One);
     return 0;
 }
