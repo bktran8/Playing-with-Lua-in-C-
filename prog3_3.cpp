@@ -15,12 +15,12 @@ int main( int argc, char *argv[]){
         cerr << "ERROR! Program accepts 1 command line argument." << endl;
     }
     
-    char input[256];
+    char str[256];
     lua_State *One = luaL_newstate();
     luaL_openlibs(One);
-    cin >> input;
+    cin >> str;
     luaL_dofile(One, argv[1]);
-    luaL_dostring(One,"InfixToPostfix(input)");
+    luaL_dostring(One,"InfixToPostfix(str)");
     printf("%s",lua_tostring(One,-1));
     lua_close(One);
     return 0;
