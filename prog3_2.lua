@@ -14,7 +14,7 @@ function InfixToPostfix (str)
         elseif v=="*" or v=="/" or v=="+" or v=="-" then
             if stack[s]==nil then
                 stack[s]=v
-            elseif ((stack[s]=="+" and v=="-") or (stack[s]=="*" and v=="/")) then
+            elseif ((stack[s]=="+" and v=="-") or (stack[s]=="*" and v=="/") or (stack[s]=="/" and v=="*") or (stack[s]=="-" and v=="+")) then
                 postfix[p] = stack[s]
                 p = p + 1
                 stack[s] = v
