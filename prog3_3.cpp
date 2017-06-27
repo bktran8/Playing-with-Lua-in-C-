@@ -20,7 +20,7 @@ int main( int argc, char *argv[]){
     luaL_openlibs(One);
     luaL_dofile(One, argv[1]);
     cin >> str;
-    luaL_dostring(One,"InfixToPostfix(str)");
+    luaL_dostring(One,"InfixToPostfix()");
     printf("%s",lua_tostring(One,-1));
     lua_close(One);
     return 0;
